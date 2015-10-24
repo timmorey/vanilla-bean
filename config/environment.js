@@ -3,6 +3,7 @@
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'vanilla-bean',
+    podModulePrefix: 'vanilla-bean/pods',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -16,7 +17,12 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-    }
+    },
+
+    contentSecurityPolicy: {
+      'font-src': "'self' https://fonts.gstatic.com",
+      'style-src': "'self' https://fonts.googleapis.com"
+    },
   };
 
   if (environment === 'development') {

@@ -1,0 +1,44 @@
+@import 'bootstrap';
+
+@import 'components/bp-abstract';
+
+// // Theme 1
+// //
+// $primary-gray: #6f6d70;
+// $primary-green: #828f62;
+// $primary-red: #c25968;
+// $primary-pink: #c57a82;
+// $primary-beige: #c9c0b9;
+
+// Theme 2
+//
+$primary-pink: #e2445a;
+$primary-beige: #f9f5f1;
+$primary-brown: #714826;
+
+/* Navbar customizations
+*/
+.navbar {
+  margin-bottom: 0;
+  background-color: $primary-beige;
+}
+
+.navbar-default {
+  .navbar-brand {
+    font-family: 'Josefin Sans';
+    font-size: 1.75em;
+    color: $primary-brown;
+    padding-top: 18px
+  }
+
+  .navbar-toggle .icon-bar {
+    background-color: $primary-brown;
+  }
+}
+
+
+/* Main index styles
+*/
+.landing-image {
+  width: 100%
+}
