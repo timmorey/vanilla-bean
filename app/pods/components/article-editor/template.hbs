@@ -1,0 +1,38 @@
+<nav>
+  <ul class='tabs'>
+    <li role='presentation' class='{{if isEditingMetadata 'active'}}'>
+      <a {{action 'editMetadata'}}>Metadata</a>
+    </li>
+    <li role='presentation' class='{{if isEditingContent 'active'}}'>
+      <a {{action 'editContent'}}>Content</a>
+    </li>
+  </ul>
+  <form class='persistence-buttons'>
+    <button class='discard-button' {{action 'discardChanges'}}>Discard Changes</button>
+    <button class='save-button' {{action 'save'}}>Save</button>
+  </form>
+</nav>
+
+{{#if isEditingMetadata}}
+  <div class='metadata-editor'>
+    <form>
+      <label>
+        Title
+        {{input value=article.title}}
+      </label>
+    </form>
+  </div>
+{{/if}}
+
+{{#if isEditingContent}}
+  <div class='content-editor'>
+    <div class='editor'>
+      {{textarea
+        value=article.content
+        keyDown=(action 'editorKeyDown')}}
+    </div>
+    <div class='preview'>
+      {{article-viewer article=article}}
+    </div>
+  </div>
+{{/if}}

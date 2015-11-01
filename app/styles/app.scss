@@ -1,6 +1,8 @@
-@import 'bootstrap';
+@import '../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap';
+@import '../../bower_components/font-awesome/scss/font-awesome';
 
-@import 'components/bp-abstract';
+@import 'components/article-editor';
+@import 'components/article-viewer';
 
 // // Theme 1
 // //
@@ -18,27 +20,40 @@ $primary-brown: #714826;
 
 /* Navbar customizations
 */
-.navbar {
-  margin-bottom: 0;
+.app-header {
+  height: 44px;
   background-color: $primary-beige;
-}
 
-.navbar-default {
-  .navbar-brand {
-    font-family: 'Josefin Sans';
-    font-size: 1.75em;
+  nav {
+    @extend .row;
+    margin: 0;
+  }
+
+  .app-title {
+    @extend .col-xs-6, .col-sm-8, .col-md-9, .col-lg-10;
+    padding: 12px 0px 8px 10px;
     color: $primary-brown;
-    padding-top: 18px
+    font-family: 'Josefin Sans';
+    font-size: 24px;
+    line-height: 24px
   }
 
-  .navbar-toggle .icon-bar {
-    background-color: $primary-brown;
+  .search {
+    @extend .col-xs-6, .col-sm-4, .col-md-3, .col-lg-2;
+    padding: 0;
+
+    .input-group {
+      padding: 5px 10px;
+    }
   }
 }
 
-
-/* Main index styles
-*/
-.landing-image {
-  width: 100%
+.article-editor {
+  position: absolute;
+  top: 44px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
 }
+
+

@@ -1,3 +1,5 @@
 {{#each model as |article|}}
-  {{template-renderer content=article.abstract}}
+  {{#link-to 'articles.article' article}}
+    {{article.title}}
+  {{/link-to}}
 {{/each}}

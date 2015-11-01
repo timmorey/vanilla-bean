@@ -9,7 +9,12 @@ Router.map(function() {
   this.route('search', function() {
     this.route('results');
   });
-  this.route('article', { path: '/article/:article_id' });
+  this.route('articles', function() {
+    this.route('article', { path: '/:article_id' }, function() {
+      this.route('edit', function() {});
+    });
+    this.route('new');
+  });
 });
 
 export default Router;

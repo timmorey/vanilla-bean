@@ -1,5 +1,7 @@
 /* jshint node: true */
 
+var Keys = require('./keys');
+
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'vanilla-bean',
@@ -15,14 +17,15 @@ module.exports = function(environment) {
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      parseApplicationId: Keys.ParseApplicationId,
+      parseJavascriptApiKey: Keys.ParseJavascriptApiKey
     },
 
     contentSecurityPolicy: {
+      'connect-src': "'self' https://api.parse.com",
       'font-src': "'self' https://fonts.gstatic.com",
       'style-src': "'self' https://fonts.googleapis.com"
-    },
+    }
   };
 
   if (environment === 'development') {
