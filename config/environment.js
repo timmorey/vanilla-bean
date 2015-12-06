@@ -24,7 +24,8 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'connect-src': "'self' https://api.parse.com",
       'font-src': "'self' https://fonts.gstatic.com",
-      'style-src': "'self' https://fonts.googleapis.com"
+      'style-src': "'self' https://fonts.googleapis.com",
+      'img-src': "'self' http://files.parsetfss.com"
     }
   };
 

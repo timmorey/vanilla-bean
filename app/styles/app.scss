@@ -2,7 +2,9 @@
 @import '../../bower_components/font-awesome/scss/font-awesome';
 
 @import 'components/article-editor';
+@import 'components/article-preview';
 @import 'components/article-viewer';
+@import 'components/image-reference';
 
 // // Theme 1
 // //
@@ -18,11 +20,15 @@ $primary-pink: #e2445a;
 $primary-beige: #f9f5f1;
 $primary-brown: #714826;
 
+html {
+  font-size: 18px;
+}
+
 /* Navbar customizations
 */
 .app-header {
   height: 44px;
-  background-color: $primary-beige;
+  background-color: #f0f0f0;
 
   nav {
     @extend .row;
@@ -44,6 +50,21 @@ $primary-brown: #714826;
 
     .input-group {
       padding: 5px 10px;
+    }
+  }
+}
+
+.article-list {
+  @extend .container;
+  list-style: none;
+
+  .article-preview {
+    margin: .5rem 0;
+    cursor: pointer;
+    transition: background-color .4s ease;
+
+    &:hover {
+      background-color: #eee;
     }
   }
 }

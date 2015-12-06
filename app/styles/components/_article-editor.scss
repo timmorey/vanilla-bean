@@ -18,6 +18,12 @@
     top: 8px;
     right: 10px;
 
+    span {
+      display: inline-block;
+      padding: 10px 0;
+      color: #808080;
+    }
+
     .save-button {
       @extend .btn, .btn-primary;
     }
@@ -32,7 +38,7 @@
     @extend %tab-content;
 
     form {
-      @extend .container-fluid;
+      @extend .container;
       padding: 15px;
     }
 
@@ -41,11 +47,24 @@
       padding: 0;
     }
 
-    input {
+    input,
+    textarea {
       @extend .form-control;
       margin: 10px 0;
       padding: 10px;
       font-weight: normal;
+      font-family: 'Courier New', Courier, monospace;
+      background-color: #333;
+      color: #eee;
+    }
+
+    textarea {
+      height: 5rem;
+    }
+
+    .article-preview {
+      @extend .col-xs-12;
+      margin: 10px 0;
     }
   }
 
@@ -81,7 +100,31 @@
     }
   }
 
-  .recipe-editor {
+  .image-editor {
     @extend %tab-content;
+    @extend .row;
+
+    .file-picker {
+      @extend .col-xs-12, .col-sm-6;
+
+      .file-picker__dropzone {
+        padding: 1rem;
+        margin: 1rem;
+        border: 1px dashed;
+        border-radius: 6px;
+        text-align: center;
+        cursor: pointer;
+      }
+    }
+
+    .image-list {
+      @extend .col-xs-12, .col-sm-6;
+      height: 100%;
+      overflow: scroll;
+    }
+
+    .image-reference:not(:last-child) {
+      border-bottom: 1px solid #ccc;
+    }
   }
 }

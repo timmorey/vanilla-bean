@@ -1,0 +1,29 @@
+.image-reference {
+  min-height: 84px;
+  padding: 10px;
+
+  .thumbnail {
+    height: 64px;
+    float: left;
+    margin: 0 1rem 0 0
+  }
+
+  .title {
+    font-size: 1rem;
+  }
+
+  a {
+    cursor: pointer;
+  }
+
+  .url {
+    display: block;
+    overflow: hidden;
+
+    input {
+      width: 100%;
+      border: none;
+    }
+
+  }
+}

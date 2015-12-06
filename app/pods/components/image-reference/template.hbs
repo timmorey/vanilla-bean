@@ -1,0 +1,6 @@
+<img class='thumbnail' src={{imageReference.imageUrl}} />
+<span class='title'>{{imageReference.title}}</span>
+<span class='url'>
+  <input value={{imageReference.imageUrl}} onclick='this.setSelectionRange(0, this.value.length)' readonly='true' />
+</span>
+<a href={{imageReference.imageUrl}} target='_blank'>Open</a> | <a {{action 'remove'}}>Remove</a>

@@ -1,1 +1,13 @@
-<h4>No results for "{{q}}"</h4>
+{{#if model.length}}
+  <ul class='article-list'>
+    {{#each model as |article|}}
+      <li>
+        {{article-preview
+          article=article
+          click=(action 'openArticle' article)}}
+      </li>
+    {{/each}}
+  </ul>
+{{else}}
+  <h4>No results for "{{q}}"</h4>
+{{/if}}

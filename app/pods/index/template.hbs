@@ -1,5 +1,9 @@
-{{#each model as |article|}}
-  {{#link-to 'articles.article' article}}
-    {{article.title}}
-  {{/link-to}}
-{{/each}}
+<ul class='article-list'>
+  {{#each model as |article|}}
+    <li>
+      {{article-preview
+        article=article
+        click=(action 'openArticle' article)}}
+    </li>
+  {{/each}}
+</ul>

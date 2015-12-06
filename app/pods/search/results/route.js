@@ -1,4 +1,21 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+const {
+  inject,
+  Route
+} = Ember;
+
+export default Route.extend({
+
+  queryParams: {
+    q: {
+      refreshModel: true
+    }
+  },
+
+  parse: inject.service(),
+
+  model(params) {
+    return this.get('parse').queryArticles(params.q);
+  }
 });

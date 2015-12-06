@@ -6,10 +6,16 @@
     <li role='presentation' class='{{if isEditingContent 'active'}}'>
       <a {{action 'editContent'}}>Content</a>
     </li>
+    <li role='presentation' class='{{if isEditingImages 'active'}}'>
+      <a {{action 'editImages'}}>Images</a>
+    </li>
   </ul>
   <form class='persistence-buttons'>
-    <button class='discard-button' {{action 'discardChanges'}}>Discard Changes</button>
-    <button class='save-button' {{action 'save'}}>Save</button>
+    {{#if articleViewModel.hasMadeChanges}}
+      <button class='save-button' {{action 'save'}}>Save</button>
+    {{else}}
+      <span>Saved {{moment-from-now article.updatedDate interval=10000}}.</span>
+    {{/if}}
   </form>
 </nav>
 
@@ -19,6 +25,18 @@
       <label>
         Title
         {{input value=article.title}}
+      </label>
+      <label>
+        Thumbnail URL
+        {{input value=article.thumbnailUrl}}
+      </label>
+      <label>
+        Abstract
+        {{textarea value=article.abstract}}
+      </label>
+      <label>
+        Preview
+        {{article-preview article=article}}
       </label>
     </form>
   </div>
@@ -33,6 +51,24 @@
     </div>
     <div class='preview'>
       {{article-viewer article=article}}
+    </div>
+  </div>
+{{/if}}
+
+{{#if isEditingImages}}
+  <div class='image-editor'>
+    {{#file-picker
+      accept='image/*'
+      multiple='true'
+      filesLoaded='filesSelected'}}
+      Drop an image here, or click to add an image
+    {{/file-picker}}
+    <div class='image-list'>
+      {{#each article.images as |imageReference|}}
+        {{image-reference
+          imageReference=imageReference
+          remove=(action 'removeImage' imageReference)}}
+      {{/each}}
     </div>
   </div>
 {{/if}}

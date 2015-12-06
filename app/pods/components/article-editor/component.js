@@ -1,36 +1,59 @@
 import Ember from 'ember';
+import ArticleViewModel from 'vanilla-bean/pods/article/view-model/model';
 
-export default Ember.Component.extend({
+const {
+  computed,
+  Component
+} = Ember;
+
+export default Component.extend({
 
   classNames: ['article-editor'],
 
   article: null,
 
+  articleViewModel: computed('article', 'article.updatedDate', function() {
+    if (this.get('article') instanceof ArticleViewModel) {
+      return this.get('article');
+    }
+
+    return ArticleViewModel.create({ article: this.get('article') });
+  }),
+
   isEditingMetadata: false,
   isEditingContent: true,
+  isEditingImages: false,
+
+
 
   actions: {
 
     editMetadata() {
       this.setProperties({
         isEditingMetadata: true,
-        isEditingContent: false
+        isEditingContent: false,
+        isEditingImages: false
       });
     },
 
     editContent() {
       this.setProperties({
         isEditingMetadata: false,
-        isEditingContent: true
+        isEditingContent: true,
+        isEditingImages: false
+      });
+    },
+
+    editImages() {
+      this.setProperties({
+        isEditingMetadata: false,
+        isEditingContent: false,
+        isEditingImages: true
       });
     },
 
     save() {
       this.sendAction('save');
-    },
-
-    discardChanges() {
-      this.sendAction('discardChanges');
     },
 
     editorKeyDown(e) {
@@ -78,6 +101,18 @@ export default Ember.Component.extend({
         textarea.selectionStart = newSelectionStart;
         textarea.selectionEnd = newSelectionEnd;
       }
+    },
+
+    filesSelected(files) {
+      let filesArray = [];
+      for (let i = 0; i < files.length; i++) {
+        filesArray.push(files[i]);
+      }
+      this.sendAction('addImages', filesArray);
+    },
+
+    removeImage(imageReference) {
+      this.sendAction('removeImage', imageReference);
     }
 
   }
