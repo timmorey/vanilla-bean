@@ -1,0 +1,15 @@
+.story-editor {
+  display: flex;
+  flex-direction: row;
+
+  .text-editor {
+    width: 50%;
+    height: 100%;
+  }
+
+  .story-viewer {
+    width: 50%;
+    height: 100%;
+    overflow: scroll;
+  }
+}

@@ -1,5 +1,12 @@
-<img src={{thumbnailUrl}} />
-<h1>{{title}}</h1>
-<p class='abstract'>
-  {{abstract}}
-</p>
+<section>
+  <img src={{thumbnailUrl}}>
+</section>
+<section>
+  <h1>{{title}}</h1>
+  <p class='abstract'>
+    {{{abstract}}}
+  </p>
+  {{#link-to 'articles.article' article}}
+    <button type='button'>Read more...</button>
+  {{/link-to}}
+</section>

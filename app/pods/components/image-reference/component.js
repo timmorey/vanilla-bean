@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   actions : {
 
     remove() {
-      this.sendAction('remove');
+      this.sendAction('remove', this.get('imageReference'));
     }
   }
 

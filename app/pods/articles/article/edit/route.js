@@ -15,6 +15,12 @@ export default Ember.Route.extend({
 
   removedImages: [],
 
+  redirect(model, transition) {
+    if (transition.targetName === 'articles.article.edit.index') {
+      this.transitionTo('articles.article.edit.summary');
+    }
+  },
+
   actions: {
 
     save() {

@@ -11,7 +11,13 @@ Router.map(function() {
   });
   this.route('articles', function() {
     this.route('article', { path: '/:article_id' }, function() {
-      this.route('edit', function() {});
+      this.route('edit', function() {
+        this.route('summary');
+        this.route('story');
+        this.route('recipe');
+        this.route('images');
+        this.route('preview');
+      });
     });
     this.route('new');
   });

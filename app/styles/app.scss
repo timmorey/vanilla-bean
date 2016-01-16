@@ -5,6 +5,12 @@
 @import 'components/article-preview';
 @import 'components/article-viewer';
 @import 'components/image-reference';
+@import 'components/json-editor';
+@import 'components/recipe-editor';
+@import 'components/recipe-viewer';
+@import 'components/story-editor';
+@import 'components/story-viewer';
+@import 'components/text-editor';
 
 // // Theme 1
 // //
@@ -14,21 +20,42 @@
 // $primary-pink: #c57a82;
 // $primary-beige: #c9c0b9;
 
-// Theme 2
+// // Theme 2
+// //
+// $primary-pink: #e2445a;
+// $primary-beige: #f9f5f1;
+// $primary-brown: #714826;
+
+// Theme 3 (http://colrd.com/image-dna/24035/):
 //
-$primary-pink: #e2445a;
-$primary-beige: #f9f5f1;
-$primary-brown: #714826;
+// $primary-pale: #FBEFC4;
+// $primary-bold: #52696F;
+// $primary-warm: #E57B7F;
+// $primary-hot: #9E3150;
+// $primary-cool: #88BAA4;
 
 html {
   font-size: 18px;
+  min-height: 100%
+}
+
+body {
+  background: url('EightyFour.gif') repeat;
 }
 
 /* Navbar customizations
 */
 .app-header {
   height: 44px;
-  background-color: #f0f0f0;
+  background-color: rgba(white, .9);
+  border-bottom: 1px solid #888;
+  position: relative;
+  z-index: 1;
+
+  &.fixed-header {
+    position: fixed;
+    top: 0;
+  }
 
   nav {
     @extend .row;
@@ -38,10 +65,9 @@ html {
   .app-title {
     @extend .col-xs-6, .col-sm-8, .col-md-9, .col-lg-10;
     padding: 12px 0px 8px 10px;
-    color: $primary-brown;
     font-family: 'Josefin Sans';
     font-size: 24px;
-    line-height: 24px
+    line-height: 24px;
   }
 
   .search {
@@ -51,21 +77,38 @@ html {
     .input-group {
       padding: 5px 10px;
     }
+
+    input {
+      height: 33px;
+    }
+  }
+
+  a, a:hover {
+    text-decoration: none;
+    color: #444;
+  }
+}
+
+main {
+  padding: 0 15px;
+
+  &.fixed-header {
+    padding: 44px 15px 0
   }
 }
 
 .article-list {
   @extend .container;
   list-style: none;
+  background-color: white;
+  box-shadow: 0 0 5px #888;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  max-width: 970px;
 
   .article-preview {
-    margin: .5rem 0;
+    margin: 1rem 0;
     cursor: pointer;
-    transition: background-color .4s ease;
-
-    &:hover {
-      background-color: #eee;
-    }
   }
 }
 

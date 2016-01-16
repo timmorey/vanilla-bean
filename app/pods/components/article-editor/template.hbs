@@ -1,14 +1,20 @@
 <nav>
   <ul class='tabs'>
-    <li role='presentation' class='{{if isEditingMetadata 'active'}}'>
-      <a {{action 'editMetadata'}}>Metadata</a>
-    </li>
-    <li role='presentation' class='{{if isEditingContent 'active'}}'>
-      <a {{action 'editContent'}}>Content</a>
-    </li>
-    <li role='presentation' class='{{if isEditingImages 'active'}}'>
-      <a {{action 'editImages'}}>Images</a>
-    </li>
+    {{#link-to 'articles.article.edit.summary' tagName='li'}}
+      {{#link-to 'articles.article.edit.summary'}}Summary{{/link-to}}
+    {{/link-to}}
+    {{#link-to 'articles.article.edit.story' tagName='li'}}
+      {{#link-to 'articles.article.edit.story'}}Story{{/link-to}}
+    {{/link-to}}
+    {{#link-to 'articles.article.edit.recipe' tagName='li'}}
+      {{#link-to 'articles.article.edit.recipe'}}Recipe{{/link-to}}
+    {{/link-to}}
+    {{#link-to 'articles.article.edit.images' tagName='li'}}
+      {{#link-to 'articles.article.edit.preview'}}Images{{/link-to}}
+    {{/link-to}}
+    {{#link-to 'articles.article.edit.preview' tagName='li'}}
+      {{#link-to 'articles.article.edit.preview'}}Preview{{/link-to}}
+    {{/link-to}}
   </ul>
   <form class='persistence-buttons'>
     {{#if articleViewModel.hasMadeChanges}}
@@ -19,56 +25,4 @@
   </form>
 </nav>
 
-{{#if isEditingMetadata}}
-  <div class='metadata-editor'>
-    <form>
-      <label>
-        Title
-        {{input value=article.title}}
-      </label>
-      <label>
-        Thumbnail URL
-        {{input value=article.thumbnailUrl}}
-      </label>
-      <label>
-        Abstract
-        {{textarea value=article.abstract}}
-      </label>
-      <label>
-        Preview
-        {{article-preview article=article}}
-      </label>
-    </form>
-  </div>
-{{/if}}
-
-{{#if isEditingContent}}
-  <div class='content-editor'>
-    <div class='editor'>
-      {{textarea
-        value=article.content
-        keyDown=(action 'editorKeyDown')}}
-    </div>
-    <div class='preview'>
-      {{article-viewer article=article}}
-    </div>
-  </div>
-{{/if}}
-
-{{#if isEditingImages}}
-  <div class='image-editor'>
-    {{#file-picker
-      accept='image/*'
-      multiple='true'
-      filesLoaded='filesSelected'}}
-      Drop an image here, or click to add an image
-    {{/file-picker}}
-    <div class='image-list'>
-      {{#each article.images as |imageReference|}}
-        {{image-reference
-          imageReference=imageReference
-          remove=(action 'removeImage' imageReference)}}
-      {{/each}}
-    </div>
-  </div>
-{{/if}}
+{{yield}}

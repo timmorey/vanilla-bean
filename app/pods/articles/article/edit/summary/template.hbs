@@ -1,0 +1,20 @@
+<div class='summary-editor'>
+  <form>
+    <label>
+      Title
+      {{input value=model.title}}
+    </label>
+    <label>
+      Thumbnail URL
+      {{input value=model.thumbnailUrl}}
+    </label>
+    <label>
+      Abstract
+      {{textarea value=model.abstract}}
+    </label>
+    <label>
+      Preview
+      {{article-preview article=model}}
+    </label>
+  </form>
+</div>

@@ -1,0 +1,21 @@
+.recipe-editor {
+  display: flex;
+
+  .json-editor {
+    flex: 0 0 50%;
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  .recipe-viewer {
+    flex: 0 0 50%;
+    height: 100%;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+
+    // Override 100vh
+    min-height: 0
+  }
+}

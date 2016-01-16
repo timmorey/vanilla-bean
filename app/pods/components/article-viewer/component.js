@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import preRender from 'vanilla-bean/utils/pre-render';
+import Recipe from 'vanilla-bean/pods/recipe/model';
 
 const { computed } = Ember;
 
@@ -9,8 +9,14 @@ export default Ember.Component.extend({
 
   article: null,
 
-  preRenderedContent: computed('article.content', function() {
-    return preRender(this.get('article.content'));
-  })
+  title: computed.alias('article.title'),
+  story: computed.alias('article.story'),
+  recipe: computed('article.recipeJson', function() {
+    try {
+      return Recipe.create(JSON.parse(this.get('article.recipeJson')));
+    } catch (err) {
+      return null;
+    }
+  }),
 
 });

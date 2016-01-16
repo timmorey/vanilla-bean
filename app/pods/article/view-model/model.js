@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import Recipe from 'vanilla-bean/pods/recipe/model';
 
 const {
   computed
@@ -12,11 +13,16 @@ export default Ember.Object.extend({
   hasMadeChanges: computed(
     'article.title',
     'article.abstract',
-    'article.content',
+    'article.story',
+    'article.recipeJson',
     'article.thumbnailUrl',
     'article.images.[]',
     function() {
       return !this.get('article').isEqual(this.get('backupArticle'));
+  }),
+
+  recipe: computed('article.recipeJson', function() {
+    return Recipe.create(JSON.parse(this.get('article.recipeJson')));
   }),
 
   init() {

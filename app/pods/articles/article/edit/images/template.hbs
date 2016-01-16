@@ -1,0 +1,15 @@
+<div class='image-editor'>
+  {{#file-picker
+    accept='image/*'
+    multiple='true'
+    filesLoaded='filesSelected'}}
+    Drop an image here, or click to add an image
+  {{/file-picker}}
+  <div class='image-list'>
+    {{#each model.images as |imageReference|}}
+      {{image-reference
+        imageReference=imageReference
+        remove='removeImage'}}
+    {{/each}}
+  </div>
+</div>

@@ -1,5 +1,6 @@
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var pickFiles = require('broccoli-static-compiler');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
@@ -23,5 +24,18 @@ module.exports = function(defaults) {
 
   app.import('bower_components/parse/parse.js');
 
-  return app.toTree();
+  // Ace (json editor)
+  //
+  // We import the base js files normally, but the worker js files need to be
+  // made available on the server so that ace can load them as needed.
+  //
+  app.import('bower_components/ace-builds/src-noconflict/ace.js');
+  app.import('bower_components/ace-builds/src-noconflict/mode-json.js');
+  const aceAssets = pickFiles('bower_components/ace-builds/src-noconflict', {
+    srcDir: '/',
+    files: ['worker-json.js', 'theme-mono_industrial.js'],
+    destDir: '/assets/ace'
+  });
+
+  return app.toTree(aceAssets);
 };

@@ -1,0 +1,23 @@
+<header>
+  <h1>{{{recipe.title}}}</h1>
+  {{#if recipe.attribution}}
+    <p>{{{recipe.attribution}}}</p>
+  {{/if}}
+  {{#if recipe.yield}}
+    <p>{{{recipe.yield}}}</p>
+  {{/if}}
+</header>
+<section class='ingredients'>
+  <ul>
+    {{#each recipe.ingredients as |ingredient|}}
+      <li>{{{ingredient}}}</li>
+    {{/each}}
+  </ul>
+</section>
+<section class='instructions'>
+  <ul>
+    {{#each recipe.instructions as |instruction|}}
+      <li>{{{instruction}}}</li>
+    {{/each}}
+  </ul>
+</section>

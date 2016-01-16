@@ -1,8 +1,17 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+const {
+  computed,
+  Controller
+} = Ember;
+
+export default Controller.extend({
 
   searchString: '',
+
+  fixedHeader: computed('currentPath', function() {
+    return this.get('currentPath').indexOf('articles.article') !== 0;
+  }),
 
   actions: {
     search: function() {

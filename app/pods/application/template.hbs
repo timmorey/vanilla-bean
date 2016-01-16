@@ -1,4 +1,4 @@
-<header class='app-header'>
+<header class='app-header {{if fixedHeader 'fixed-header'}}'>
   <nav>
     <div class='app-title'>
       {{#link-to 'index'}}Title{{/link-to}}
@@ -13,6 +13,6 @@
     </form>
   </nav>
 </header>
-<main>
+<main class={{if fixedHeader 'fixed-header'}}>
   {{outlet}}
 </main>

@@ -7,6 +7,7 @@
 }
 
 .article-editor {
+  background-color: #eee;
 
   .tabs {
     @extend .nav, .nav-tabs;
@@ -34,8 +35,9 @@
     }
   }
 
-  .metadata-editor {
+  .summary-editor {
     @extend %tab-content;
+    overflow: scroll;
 
     form {
       @extend .container;
@@ -65,39 +67,16 @@
     .article-preview {
       @extend .col-xs-12;
       margin: 10px 0;
+      background-color: white;
     }
   }
 
-  .content-editor {
+  .story-editor {
     @extend %tab-content;
-    display: flex;
-    flex-direction: row;
+  }
 
-    .editor {
-      width: 50%;
-      height: 100%;
-      display: flex;
-
-      textarea {
-        flex: 1;
-        padding: 10px;
-        font-family: 'Courier New', Courier, monospace;
-        outline: none;
-        background-color: #333;
-        color: #eee;
-      }
-    }
-
-    .preview {
-      width: 50%;
-      height: 100%;
-      overflow: scroll;
-      display: flex;
-
-      .article-viewer {
-        flex: 1;
-      }
-    }
+  .recipe-editor {
+    @extend %tab-content;
   }
 
   .image-editor {
