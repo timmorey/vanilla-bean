@@ -22,8 +22,6 @@ module.exports = function(defaults) {
 
   app.import('bower_components/bootstrap-sass/assets/javascripts/bootstrap.js');
 
-  app.import('bower_components/parse/parse.js');
-
   // Ace (json editor)
   //
   // We import the base js files normally, but the worker js files need to be

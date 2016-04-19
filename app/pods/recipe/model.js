@@ -1,19 +1,11 @@
 import Ember from 'ember';
 
-const Recipe = Ember.Object.extend({
+export default Ember.Object.extend({
 
-  toJson() {
-
-  },
-
-  isEqual(recipe) {
-    return false;
-  },
-
-  copy() {
-    return Recipe.create(this.toJson());
-  }
+  title: null,
+  attribution: null,
+  yield: null,
+  ingredients: null,
+  instructions: null,
 
 });
-
-export default Recipe;

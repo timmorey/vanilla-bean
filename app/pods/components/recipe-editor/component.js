@@ -3,6 +3,8 @@ import Recipe from 'vanilla-bean/pods/recipe/model';
 
 const {
   computed,
+  get,
+  set,
   Component
 } = Ember;
 
@@ -14,10 +16,12 @@ export default Component.extend({
 
   recipe: computed('recipeJson', function() {
     try {
-      return Recipe.create(JSON.parse(this.get('recipeJson')));
+      return set(this, '_lastValidRecipe', Recipe.create(JSON.parse(this.get('recipeJson'))));
     } catch (err) {
-      return null;
+      return get(this, '_lastValidRecipe');
     }
   }),
+
+  _lastValidRecipe: null,
 
 });

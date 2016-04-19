@@ -1,12 +1,11 @@
 /* jshint node: true */
 
-var Keys = require('./keys');
-
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'vanilla-bean',
     podModulePrefix: 'vanilla-bean/pods',
     environment: environment,
+    firebase: 'https://pecan.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
@@ -17,8 +16,6 @@ module.exports = function(environment) {
     },
 
     APP: {
-      parseApplicationId: Keys.ParseApplicationId,
-      parseJavascriptApiKey: Keys.ParseJavascriptApiKey
     },
 
     contentSecurityPolicy: {

@@ -1,15 +1,9 @@
 import Ember from 'ember';
 
-const {
-  inject
-} = Ember;
-
 export default Ember.Route.extend({
 
-  parse: inject.service(),
-
   model(params) {
-    return this.get('parse').fetchArticle(this._idFromNiceId(params.article_id));
+    return this.store.findRecord('article', this._idFromNiceId(params.article_id));
   },
 
   serialize(model) {
@@ -24,13 +18,5 @@ export default Ember.Route.extend({
   _idFromNiceId(niceId) {
     return niceId.substring(niceId.lastIndexOf('_') + 1);
   },
-
-  actions: {
-
-    refreshModel() {
-      this.refresh();
-    }
-
-  }
 
 });

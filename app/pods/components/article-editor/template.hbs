@@ -9,18 +9,15 @@
     {{#link-to 'articles.article.edit.recipe' tagName='li'}}
       {{#link-to 'articles.article.edit.recipe'}}Recipe{{/link-to}}
     {{/link-to}}
-    {{#link-to 'articles.article.edit.images' tagName='li'}}
-      {{#link-to 'articles.article.edit.preview'}}Images{{/link-to}}
-    {{/link-to}}
     {{#link-to 'articles.article.edit.preview' tagName='li'}}
       {{#link-to 'articles.article.edit.preview'}}Preview{{/link-to}}
     {{/link-to}}
   </ul>
   <form class='persistence-buttons'>
-    {{#if articleViewModel.hasMadeChanges}}
+    {{#if hasUnsavedChanges}}
       <button class='save-button' {{action 'save'}}>Save</button>
     {{else}}
-      <span>Saved {{moment-from-now article.updatedDate interval=10000}}.</span>
+      <span>Saved {{moment-from-now article.dateModified interval=10000}}.</span>
     {{/if}}
   </form>
 </nav>

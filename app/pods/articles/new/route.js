@@ -1,22 +1,29 @@
 import Ember from 'ember';
-import Article from 'vanilla-bean/pods/article/model';
 
 const {
-  inject
+  get,
+  Route
 } = Ember;
 
-export default Ember.Route.extend({
-
-  parse: inject.service(),
+export default Route.extend({
 
   model() {
-    const article = Article.create();
-    return this.get('parse').saveArticle(article)
-      .then(() => article);
+    const article = this.store.createRecord('article', {
+      title: 'new article',
+      dateCreated: new Date(),
+      dateModified: new Date(),
+    });
+    article.save().then(() => this.transitionTo('articles.article.edit', article));
+    return article;
   },
 
-  redirect(article) {
-    this.transitionTo('articles.article.edit', article);
+  actions: {
+
+    save() {
+      const article = get(this, 'controller.model');
+      article.save().then(() => this.transitionTo('articles.article.edit', article));
+    }
+
   }
 
 });

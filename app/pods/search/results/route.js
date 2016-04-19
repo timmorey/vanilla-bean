@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 const {
-  inject,
   Route
 } = Ember;
 
@@ -13,9 +12,10 @@ export default Route.extend({
     }
   },
 
-  parse: inject.service(),
-
   model(params) {
-    return this.get('parse').queryArticles(params.q);
+    return this.store.findAll('article')
+      .then(articles => articles.filter(article =>
+        article.get('title').toLowerCase().indexOf(params.q.toLowerCase()) !== -1));
   }
+
 });

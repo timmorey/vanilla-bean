@@ -15,7 +15,6 @@ Router.map(function() {
         this.route('summary');
         this.route('story');
         this.route('recipe');
-        this.route('images');
         this.route('preview');
       });
     });
